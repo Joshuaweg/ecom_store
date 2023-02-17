@@ -52,6 +52,12 @@
     <Compile Include="ecom_store\settings.py" />
     <Compile Include="ecom_store\urls.py" />
     <Compile Include="ecom_store\wsgi.py" />
+    <Compile Include="test_home.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test_product.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
