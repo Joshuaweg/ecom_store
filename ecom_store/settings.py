@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Our Created Apps
     'home',
+    'products',
 ]
 
 # Middleware framework
