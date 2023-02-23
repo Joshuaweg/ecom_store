@@ -84,6 +84,10 @@
     <Folder Include="home\migrations\" />
     <Folder Include="home\templates\" />
     <Folder Include="home\templates\home\" />
+    <Folder Include="obj\" />
+    <Folder Include="obj\Any CPU\" />
+    <Folder Include="obj\Any CPU\Debug\" />
+    <Folder Include="obj\Debug\" />
     <Folder Include="products\" />
     <Folder Include="products\migrations\" />
     <Folder Include="products\templates\" />
@@ -91,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="home\templates\home\index.html" />
+    <Content Include="obj\Any CPU\Debug\ecom_store.pyproj.FileListAbsolute.txt" />
     <Content Include="products\templates\product_page\product_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
@@ -122,6 +127,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="testEnvironments.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
