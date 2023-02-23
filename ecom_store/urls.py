@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('home/',views.home),  # I dont know if this need or not
 
-    path('home', include('home.urls')), # <- Troy added this 
-    path('products', include('products.urls')), # <- Troy Created this
+    path('', include('home.urls')), # <- Troy added this 
+    path('', include('products.urls')), # <- Troy Created this
     # issue is these 2 ^  
 ]

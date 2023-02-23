@@ -7,7 +7,8 @@
     <TestFramework>pytest</TestFramework>
     <UnitTestPattern>test*.py</UnitTestPattern>
     <UnitTestRootDirectory>.</UnitTestRootDirectory>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|Python 311|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,6 +46,7 @@
     <Compile Include="home\migrations\__init__.py" />
     <Compile Include="home\models.py" />
     <Compile Include="home\tests.py" />
+    <Compile Include="home\urls.py" />
     <Compile Include="home\views.py" />
     <Compile Include="home\__init__.py" />
     <Compile Include="manage.py" />
@@ -52,6 +54,14 @@
     <Compile Include="ecom_store\settings.py" />
     <Compile Include="ecom_store\urls.py" />
     <Compile Include="ecom_store\wsgi.py" />
+    <Compile Include="products\admin.py" />
+    <Compile Include="products\apps.py" />
+    <Compile Include="products\migrations\__init__.py" />
+    <Compile Include="products\models.py" />
+    <Compile Include="products\tests.py" />
+    <Compile Include="products\urls.py" />
+    <Compile Include="products\views.py" />
+    <Compile Include="products\__init__.py" />
     <Compile Include="test_home.py">
       <SubType>Code</SubType>
     </Compile>
@@ -74,9 +84,14 @@
     <Folder Include="home\migrations\" />
     <Folder Include="home\templates\" />
     <Folder Include="home\templates\home\" />
+    <Folder Include="products\" />
+    <Folder Include="products\migrations\" />
+    <Folder Include="products\templates\" />
+    <Folder Include="products\templates\product_page\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="home\templates\home\index.html" />
+    <Content Include="products\templates\product_page\product_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -118,6 +133,15 @@
       <Id>env</Id>
       <Version>3.9</Version>
       <Description>env (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="Python 311\">
+      <Id>Python 311</Id>
+      <Version>3.11</Version>
+      <Description>Python 311 (Python 3.11 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

@@ -2,6 +2,6 @@ from django.urls import path
 
 from . import views 
 
-urlspatterns = [
+urlpatterns = [
     path('products', views.product_list)
 ]
