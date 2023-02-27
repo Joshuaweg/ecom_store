@@ -1,8 +1,9 @@
 import unittest
+import os
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+def test_h():
+    assert os.path.exists('home\\templates\\home') == True
+    assert os.path.exists('home\\urls.py') == True
+    assert os.path.exists('home\\views.py') == True
 
-class Test_home(unittest.TestCase):
-    def test_A(self):
-       pass
-
-if __name__ == '__main__':
-    unittest.main()

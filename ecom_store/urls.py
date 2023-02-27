@@ -13,7 +13,7 @@ from app import forms, views
 # from products import views # No views yet
 
 urlpatterns = [
-    # path('', views.home, name='home'), #  <- Troy did not make this
+    #path('', views.home, name=''), #  <- Troy did not make this
     path('login/',
          LoginView.as_view
          (
@@ -28,8 +28,6 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    #path('home/',views.home),  # I dont know if this need or not
-
     path('', include('home.urls')), # <- Troy added this 
     path('', include('products.urls')), # <- Troy Created this
     # issue is these 2 ^  
