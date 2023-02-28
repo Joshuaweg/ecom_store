@@ -13,7 +13,7 @@ from app import forms, views
 # from products import views # No views yet
 
 urlpatterns = [
-    #path('', views.home, name=''), #  <- Troy did not make this
+   # path('/', include('home.urls')), #  <- Troy did not make this
     path('login/',
          LoginView.as_view
          (
