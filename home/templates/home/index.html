@@ -21,15 +21,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="products">Shirts</a>
                 </li>
-                <li class="nav-item">
-                    <form class=" nav-item" action="products">
-                        <input type="text" placeholder="Enter search here ..." name="search" />
-                        <input type="submit" name="Search" value="Search" />
-                    </form>
-                </li>
             </ul>
+            <form class="form-inline my-2 my-lg-0" action="products">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
+                <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
+            </form>
             <button type="button" href="/login" class="btn btn-primary">Login</button>
-            <button type="button" href="/signup" class="btn btn-secondary">Sign-In</button>
+            <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
         </nav>
         <p>Today is {{today}}</p>
 
