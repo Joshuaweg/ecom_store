@@ -41,6 +41,14 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="credit_cards\admin.py" />
+    <Compile Include="credit_cards\apps.py" />
+    <Compile Include="credit_cards\migrations\__init__.py" />
+    <Compile Include="credit_cards\models.py" />
+    <Compile Include="credit_cards\tests.py" />
+    <Compile Include="credit_cards\urls.py" />
+    <Compile Include="credit_cards\views.py" />
+    <Compile Include="credit_cards\__init__.py" />
     <Compile Include="home\admin.py" />
     <Compile Include="home\apps.py" />
     <Compile Include="home\migrations\__init__.py" />
@@ -49,6 +57,14 @@
     <Compile Include="home\urls.py" />
     <Compile Include="home\views.py" />
     <Compile Include="home\__init__.py" />
+    <Compile Include="orders\admin.py" />
+    <Compile Include="orders\apps.py" />
+    <Compile Include="orders\migrations\__init__.py" />
+    <Compile Include="orders\models.py" />
+    <Compile Include="orders\tests.py" />
+    <Compile Include="orders\urls.py" />
+    <Compile Include="orders\views.py" />
+    <Compile Include="orders\__init__.py" />
     <Compile Include="test_products.py" />
     <Compile Include="manage.py" />
     <Compile Include="ecom_store\__init__.py" />
@@ -79,6 +95,8 @@
     <Folder Include="app\templates\app\" />
     <Folder Include="boot\css\" />
     <Folder Include="boot\js\" />
+    <Folder Include="credit_cards\" />
+    <Folder Include="credit_cards\migrations\" />
     <Folder Include="ecom_store\" />
     <Folder Include="home\" />
     <Folder Include="home\migrations\" />
@@ -89,6 +107,8 @@
     <Folder Include="obj\Any CPU\" />
     <Folder Include="obj\Any CPU\Debug\" />
     <Folder Include="obj\Debug\" />
+    <Folder Include="orders\" />
+    <Folder Include="orders\migrations\" />
     <Folder Include="products\" />
     <Folder Include="products\migrations\" />
     <Folder Include="products\templates\" />
