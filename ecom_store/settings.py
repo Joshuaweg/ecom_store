@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     #Our Created Apps
     'home',
     'products',
+    'credit_cards',
+    'orders',
 ]
 
 # Middleware framework
