@@ -27,11 +27,13 @@
         <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
     </nav>
     <h1>These are the products: </h1>
-
-    <ul>
-        {% for product in products %}
-        <li>{{product.title}}</li>
-        {% endfor %}
-    </ul>
+    <div>
+        <ul>
+            {% for product in products %}
+            <li><a href="/products/item?id={{product.id}}">{{product.title}}</a></li>
+            <li>{{product.description}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

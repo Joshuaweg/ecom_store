@@ -97,6 +97,8 @@
     <Folder Include="boot\js\" />
     <Folder Include="credit_cards\" />
     <Folder Include="credit_cards\migrations\" />
+    <Folder Include="credit_cards\templates\" />
+    <Folder Include="credit_cards\templates\credit_cards\" />
     <Folder Include="ecom_store\" />
     <Folder Include="home\" />
     <Folder Include="home\migrations\" />
@@ -109,6 +111,8 @@
     <Folder Include="obj\Debug\" />
     <Folder Include="orders\" />
     <Folder Include="orders\migrations\" />
+    <Folder Include="orders\templates\" />
+    <Folder Include="orders\templates\orders\" />
     <Folder Include="products\" />
     <Folder Include="products\migrations\" />
     <Folder Include="products\templates\" />
@@ -154,8 +158,11 @@
     <Content Include="boot\js\bootstrap.js.map" />
     <Content Include="boot\js\bootstrap.min.js" />
     <Content Include="boot\js\bootstrap.min.js.map" />
+    <Content Include="credit_cards\templates\credit_cards\index.html" />
     <Content Include="home\templates\home\index.html" />
     <Content Include="obj\Any CPU\Debug\ecom_store.pyproj.FileListAbsolute.txt" />
+    <Content Include="orders\templates\orders\index.html" />
+    <Content Include="products\templates\products\product_page.html" />
     <Content Include="products\templates\products\product_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

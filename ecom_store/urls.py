@@ -30,5 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')), # <- Troy added this 
     path('', include('products.urls')), # <- Troy Created this
-    # issue is these 2 ^  
+    path('',include('orders.urls')),
+    path('',include('credit_cards.urls')),
 ]
