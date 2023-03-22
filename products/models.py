@@ -4,6 +4,7 @@ from django.db import models
 # To be handled by Denshire 
 # T-shirts
 
+
 class Product(models.Model):
 
     # Size options for a shirt; by giving these choices to the size field, it will default to a select box instead of a
@@ -21,14 +22,15 @@ class Product(models.Model):
     )
 
     title = models.CharField(max_length=200)           # Name of the product
-    description = models.TextField()                   # Description of the item
+    description = models.TextField(default='')         # Description of the item
     created = models.DateTimeField(auto_now_add=True)  # When the product is created (added to database)
-    color = models.CharField(max_length=20)
+    color = models.CharField(max_length=20, default='')
     size = models.CharField(max_length=4, choices=SIZE_CHOICES, default="M")
-    price = models.FloatField()
-    image_id = models.PositiveIntegerField()
+    price = models.FloatField(default=0)
+    image_id = models.PositiveIntegerField(default=0)
 
-    # Possible Fields below:
-    # image id - might be possible to replace with direct reference to the image, with models.ImageField()
 
-    # product id - unnecessary; database items are automatically given IDs by Django
+class ProductImage(models.Model):
+    title = models.CharField(max_length=200)           # title of image object
+    created = models.DateTimeField(auto_now_add=True)  # time of image creation (upload)
+    image = models.ImageField()                        # image file itself
