@@ -23,15 +23,22 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
             <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
         </form>
-        <button type="button" href="/login" class="btn btn-primary">Login</button>
-        <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
+        <a href="/login" class="btn btn-primary">Login</a>
+        <a href="/signup" class="btn btn-secondary">Sign-Up</a>
     </nav>
     <h1>These are the products: </h1>
     <div>
         <ul>
             {% for product in products %}
-            <li><a href="/products/item?id={{product.id}}">{{product.title}}</a></li>
-            <li>{{product.description}}</li>
+            <li>
+                <div>
+                    <a href="/products/item?id={{product.id}}">{{product.title}}</a>
+                    <p>{{product.description}}/color-{{product.color}}</p>
+                    <form action="orders/AddtoCart">
+                        <button type="submit" href="/orders/AddtoCart" class="btn btn-dark">Add to Cart</button>
+                    </form>
+                </div>
+            </li>
             {% endfor %}
         </ul>
     </div>

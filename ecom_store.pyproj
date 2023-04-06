@@ -105,6 +105,8 @@
     <Folder Include="home\templates\" />
     <Folder Include="home\templates\home\" />
     <Folder Include="boot\" />
+    <Folder Include="images\" />
+    <Folder Include="images\shirts\" />
     <Folder Include="obj\" />
     <Folder Include="obj\Any CPU\" />
     <Folder Include="obj\Any CPU\Debug\" />
@@ -160,6 +162,15 @@
     <Content Include="boot\js\bootstrap.min.js.map" />
     <Content Include="credit_cards\templates\credit_cards\index.html" />
     <Content Include="home\templates\home\index.html" />
+    <Content Include="images\shirts\Blue.jpg" />
+    <Content Include="images\shirts\buttoned.jpg" />
+    <Content Include="images\shirts\Grean Plaid.jpg" />
+    <Content Include="images\shirts\Green.jpg" />
+    <Content Include="images\shirts\Grey.jpg" />
+    <Content Include="images\shirts\Plaid.jpg" />
+    <Content Include="images\shirts\Purple.jpg" />
+    <Content Include="images\shirts\Red.jpg" />
+    <Content Include="images\shirts\Yellow.jpg" />
     <Content Include="obj\Any CPU\Debug\ecom_store.pyproj.FileListAbsolute.txt" />
     <Content Include="orders\templates\orders\index.html" />
     <Content Include="products\templates\products\product_page.html" />
