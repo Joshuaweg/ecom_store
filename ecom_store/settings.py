@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'products',
     'credit_cards',
     'orders',
-    'email_confirmation'
+    'email_confirmation',
+    'user'
 ]
 
 # Middleware framework
