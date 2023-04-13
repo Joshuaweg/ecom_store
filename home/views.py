@@ -3,4 +3,5 @@ from django.http import HttpResponse
 from datetime import datetime
 # Create your views here.
 def home(request):
-    return render(request,'home/index.html',{'today':datetime.today()})
+    #cart = Cart.objects.get(userid=request.GET.get("User"))
+    return render(request,'home/index.html',{'today':datetime.today()}) #add 'cart':cart
