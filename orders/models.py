@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from products.models import Product
+from credit_cards.models import CreditCard
 
 
 class Order(models.Model):
@@ -9,10 +11,22 @@ class Order(models.Model):
     )
 
     associated_user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
     shipping_name = models.CharField(max_length=100)
     shipping_address = models.CharField(max_length=100)
     shipping_address_2 = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=4, choices=STATE_CHOICES, default="AL")
     zip_code = models.CharField(max_length=5)
-    credit_card = models.CharField(max_length=16)
+    credit_card = models.ForeignKey(CreditCard, on_delete=models.CASCADE)
+
+
+class Cart(models.Model):
+    associated_user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+
+class CartProductTable(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    productQuantity = models.IntegerField()
+    associated_cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+
