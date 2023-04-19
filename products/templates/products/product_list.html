@@ -34,7 +34,7 @@
             <li>
                 <div>
                     <a href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}</a>
-                    <img class="img-thumbnail h-25" src="{% static "images/shirts/Blue.jpg" %}" />
+                    <img class="img-thumbnail h-25" src="static/images/shirts/{{product.image_id}}.jpg" />
                     <p>{{product.description}}/color-{{product.color}}</p>
                     <form action="orders/AddtoCart">
                         <button type="submit" href="/orders/AddtoCart" class="btn btn-dark">Add to Cart</button>
