@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Product
+from django.contrib.staticfiles import settings
+import os
 
 # Create your views here.
 def product_list(request):  # Rename is necessary

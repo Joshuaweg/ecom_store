@@ -1,3 +1,4 @@
+<!-- #This Page is the Main Search Page for the Website. User should be able to view and add products to their Carts -->
 <html>
 <head>
     <title>AZ ECommerce</title>
@@ -32,7 +33,8 @@
             {% for product in products %}
             <li>
                 <div>
-                    <a href="/products/item?id={{product.id}}">{{product.title}}</a>
+                    <a href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}</a>
+                    <img class="img-thumbnail h-25" src="{% static "images/shirts/Blue.jpg" %}" />
                     <p>{{product.description}}/color-{{product.color}}</p>
                     <form action="orders/AddtoCart">
                         <button type="submit" href="/orders/AddtoCart" class="btn btn-dark">Add to Cart</button>

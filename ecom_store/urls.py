@@ -6,6 +6,7 @@ from datetime import datetime
 from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import redirect
 from app import forms, views
 
 # from home import views
@@ -32,4 +33,5 @@ urlpatterns = [
     path('', include('products.urls')), # <- Troy Created this
     path('',include('orders.urls')),
     path('',include('credit_cards.urls')),
+    path('', lambda req: redirect('/home')),
 ]
