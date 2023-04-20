@@ -1667,6 +1667,14 @@
     <Compile Include="test_home.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="user\admin.py" />
+    <Compile Include="user\apps.py" />
+    <Compile Include="user\migrations\__init__.py" />
+    <Compile Include="user\models.py" />
+    <Compile Include="user\tests.py" />
+    <Compile Include="user\urls.py" />
+    <Compile Include="user\views.py" />
+    <Compile Include="user\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -4258,6 +4266,12 @@
     <Folder Include="static\app\content\" />
     <Folder Include="static\app\fonts\" />
     <Folder Include="static\app\scripts\" />
+    <Folder Include="user\" />
+    <Folder Include="user\migrations\" />
+    <Folder Include="user\migrations\__pycache__\" />
+    <Folder Include="user\templates\" />
+    <Folder Include="user\templates\user\" />
+    <Folder Include="user\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="boot\css\bootstrap-grid.css" />
@@ -7945,6 +7959,16 @@
     <Content Include="testing.txt">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="user\migrations\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="user\migrations\__pycache__\__init__.cpython-39.pyc" />
+    <Content Include="user\templates\user\login.html" />
+    <Content Include="user\templates\user\register.html" />
+    <Content Include="user\__pycache__\admin.cpython-311.pyc" />
+    <Content Include="user\__pycache__\apps.cpython-311.pyc" />
+    <Content Include="user\__pycache__\apps.cpython-39.pyc" />
+    <Content Include="user\__pycache__\models.cpython-311.pyc" />
+    <Content Include="user\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="user\__pycache__\__init__.cpython-39.pyc" />
     <None Include="static\app\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="static\app\scripts\jquery-1.10.2.js" />
     <Content Include="static\app\scripts\jquery-1.10.2.min.js" />

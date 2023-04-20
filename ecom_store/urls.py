@@ -15,6 +15,7 @@ from app import forms, views
 
 urlpatterns = [
    # path('/', include('home.urls')), #  <- Troy did not make this
+   path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('login/',
          LoginView.as_view
          (
@@ -33,5 +34,6 @@ urlpatterns = [
     path('', include('products.urls')), # <- Troy Created this
     path('',include('orders.urls')),
     path('',include('credit_cards.urls')),
+    path('',include('user.urls')),
     path('', lambda req: redirect('/home')),
 ]

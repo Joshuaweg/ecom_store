@@ -2,9 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def login(request):
-    pass
-    # return render(request,)
+    return render(request,'user/login.html')
 
 def sign_up(request):
-    pass
-    # return render(request,)
+    return render(request,'user/register.html')
