@@ -4,10 +4,7 @@ from .models import Product
 # Create your views here.
 #this is th Product List View
 def product_list(request):  # Rename is necessary
-
-    
     all_products = Product.objects.all()
-  
     return render(request, 'products/product_list.html', {'products': all_products}) #add 'cart':cart
 #this is the product page View
 def product_page(request):

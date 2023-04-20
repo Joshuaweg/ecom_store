@@ -16,6 +16,7 @@ from app import forms, views
 urlpatterns = [
    # path('/', include('home.urls')), #  <- Troy did not make this
    path('admin/doc/', include('django.contrib.admindocs.urls')),
+   path("accounts/", include("django.contrib.auth.urls")),
     path('login/',
          LoginView.as_view
          (
