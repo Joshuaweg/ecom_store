@@ -17,20 +17,8 @@ urlpatterns = [
    # path('/', include('home.urls')), #  <- Troy did not make this
    path('admin/doc/', include('django.contrib.admindocs.urls')),
    path("accounts/", include("django.contrib.auth.urls")),
-    path('login/',
-         LoginView.as_view
-         (
-             template_name='app/login.html',
-             authentication_form=forms.BootstrapAuthenticationForm,
-             extra_context=
-             {
-                 'title': 'Log in',
-                 'year' : datetime.now().year,
-             }
-         ),
-         name='login'),
-    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
-    path('admin/', admin.site.urls),
+   path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+   path('admin/', admin.site.urls),
     path('', include('home.urls')), # <- Troy added this 
     path('', include('products.urls')), # <- Troy Created this
     path('',include('orders.urls')),
