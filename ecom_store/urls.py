@@ -24,5 +24,6 @@ urlpatterns = [
     path('',include('orders.urls')),
     path('',include('credit_cards.urls')),
     path('',include('user.urls')),
+    path('',include('email_confirmation.urls')),
     path('', lambda req: redirect('/home')),
 ]

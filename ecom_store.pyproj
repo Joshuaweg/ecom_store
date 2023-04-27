@@ -1686,6 +1686,8 @@
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="email_confirmation\Templates\" />
+    <Folder Include="email_confirmation\Templates\email_confirmation\" />
     <Folder Include="templates\registration\" />
     <Folder Include="boot\css\" />
     <Folder Include="boot\js\" />
@@ -4276,6 +4278,7 @@
     <Folder Include="user\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="email_confirmation\Templates\email_confirmation\index.html" />
     <Content Include="templates\registration\signup.html" />
     <Content Include="templates\registration\login.html" />
     <Content Include="boot\css\bootstrap-grid.css" />

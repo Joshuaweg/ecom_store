@@ -11,9 +11,9 @@ def product_list(request):  # Rename is necessary
     
     if request.user.is_authenticated:
         cart = Cart.objects.get(associated_user=request.user.id)
-        cartList=CartProductTable.objects.get(associated_cart=cart.id)
+        cartList=CartProductTable.objects.filter(associated_cart=cart.id)
         
-        return render(request, 'products/product_list.html', {'products': all_products, 'cart': cart})
+        return render(request, 'products/product_list.html', {'products': all_products, 'cartList': cartList,'cart':cart})
     else:
         return render(request, 'products/product_list.html', {'products': all_products}) #add 'cart':cart
     
@@ -24,10 +24,10 @@ def product_page(request):
     product = Product.objects.get(pk=request.GET.get("id"))
 
     if request.user.is_authenticated:
-        cart = Cart.objects.get(associated_user=request.user.id)
+        cart = Cart.objects.get(associated_user=request.user)
         cartList=CartProductTable.objects.get(associated_cart=cart.id)
 
-        return render(request,'products/product_page.html',{'product':product ,'cart': cart})
+        return render(request,'products/product_page.html',{'product':product ,'cart': cart,'cartList':cartList})
     else:
         return render(request,'products/product_page.html',{'product':product})#add 'cart':cart
 

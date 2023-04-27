@@ -123,4 +123,5 @@ STATICFILES_DIRS = [
 ]
 LOGIN_REDIRECT_URL = "/"
 
-
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

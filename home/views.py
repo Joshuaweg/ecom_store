@@ -10,7 +10,8 @@ def home(request):
 
     if request.user.is_authenticated :
         cart = models.Cart.objects.get(associated_user=request.user.id)
-        cartList=models.CartProductTable.objects.get(associated_cart=cart.id)
+        cartList=models.CartProductTable.objects.filter(associated_cart=cart.id)
+        print(len(cartList))
         return render(request,'home/index.html',{'today':datetime.today(),"cart":cartList}) #add 'cart':cart
     else:
         return render(request,'home/index.html',{'today':datetime.today()})

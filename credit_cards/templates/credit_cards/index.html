@@ -9,15 +9,33 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
 <body>
-    <form>
+    <div>
+        <h3>Shipping Address</h3>
+        <p>Name: {{shipping.name}}</p>
+        <p>Address: {{shipping.address1}}</p>
+        <p>Room Number: {{shipping.address2}}</p>
+        <p>City: {{shipping.city}}</p>
+        <p>State: {{shipping.state}}</p>
+        <p>Zip Code: {{shipping.zipcode}}</p>
+    </div>
+    <form action="orders/checkout" method="post">
+        {% csrf_token %}
         <label for="CardholserName">Cardholder</label>
         <input name="CardholderName" type="text" />
         <label for="CreditCardnumber">Credit Card Number</label>
-        <input name="CreditCardnumber" type="text" />
+        <input name="CreditCardNumber" type="text" />
         <label for="exprdate">Expiration Date</label>
         <input name="exprdate" type="text" />
         <label for="CVV">CCV Name</label>
         <input name="CVV" type="text" />
+        <input type="hidden" name="cart_id" value={{cart}} />
+        <input type="hidden" name="name" value={{shipping.name}} />
+        <input type="hidden" name="address1" value={{shipping.address1}} />
+        <input type="hidden" name="address2" value={{shipping.address2}} />
+        <input type="hidden" name="city" value={{shipping.city}} />
+        <input type="hidden" name="state" value={{shipping.state}} />
+        <input type="hidden" name="zipcode" value={{shipping.zipcode}} />
+        <button type="submit">Checkout</button>
     </form>
 </body>
 </html>

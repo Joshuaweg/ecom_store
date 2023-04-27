@@ -2,12 +2,43 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="u <title>AZ ECommerce</title>
+    <meta charset="utf8" <title>AZ ECommerce</title>
     {% load static %}
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.js' %}"></script><title></title>
 </head>
 <body>
+    <ol>
+        {% for item in items%}
+        <li>
+            <div>
+                <ul>
+                    <li> <p>{{item.product.title}}</p></li> 
+                    <li><p>{{item.product.description}}</p></li>
+                    <li><p>{{item.productQuantity}}</p></li>
+                    <li><p>{{item.product.price}}</p></li>
+                </ul>
+            </div>
+        </li>
+        {%endfor%}
+    </ol>
 
+    <form action="credit_cards?cart_id={{cart.id}}" method="post">
+        {% csrf_token %}
+        <label for="name">Name</label>
+        <input name="name" type="text" />
+        <label for="address1">Address</label>
+        <input name="address1" type="text" />
+        <label for="address2">Apartment/Suite number</label>
+        <input name="address2" type="text" />
+        <label for="city">City</label>
+        <input name="city" type="text" />
+        <label for="state">State</label>
+        <input name="state" type="text" />
+        <label for="zipcode">Zip Code</label>
+        <input name="zipcode" type="text" />
+        <input name="cart_id" type="hidden" value="{{cart.id}}"/>
+        <button type="submit">Continue to checkout</button>
+    </form>
 </body>
 </html>

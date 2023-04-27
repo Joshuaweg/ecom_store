@@ -26,6 +26,11 @@
         </form>
         <a href="user/login" class="btn btn-primary">Login</a>
         <a href="user/signup" class="btn btn-secondary">Sign-Up</a>
+        {%if cart%}
+        <a href="orders?cart={{cart.id}}" class="btn ">Cart ({{cartList|length}})</a>
+        {%else%}
+        <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+        {%endif%}
     </nav>
     <h1>These are the products: </h1>
     <div>
@@ -39,7 +44,10 @@
                     {%if cart%}
                     <form action="orders/AddtoCart" method="post">
                         {% csrf_token %}
-                        <button type="submit" href="/orders/AddtoCart?id={{product.id}}&cart={{cart.associated_cart}}&count=1" class="btn btn-dark">Add to Cart</button>
+                        <input type="hidden" name="id" value={{product.id}} />
+                        <input type="hidden" name="cart" value={{cart.id}} />
+                        <input type="hidden" name="count" value=1 />
+                        <button type="submit" class="btn btn-dark">Add to Cart</button>
 
                     </form>
                     {%else%}

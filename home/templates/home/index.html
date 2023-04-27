@@ -29,7 +29,11 @@
             </form>
             <a href="/accounts/login" class="btn btn-primary">Login</a>
             <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
-            <button type="button" class="btn green">Cart</button>
+            {%if cart%}
+            <a  href="orders?cart={{cart.0.associated_cart.id}}" class="btn ">Cart ({{cart|length}})</a>
+            {%else%}
+            <a  href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+            {%endif%}
         </nav>
         <p>Today is {{today}} </p>
 

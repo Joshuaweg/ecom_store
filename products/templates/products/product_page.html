@@ -26,6 +26,11 @@
         </form>
         <button type="button" href="/login" class="btn btn-primary">Login</button>
         <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
+        {%if cart%}
+        <a href="orders?cart={{cart.0.associated_cart.id}}" class="btn ">Cart ({{cartList|length}})</a>
+        {%else%}
+        <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+        {%endif%}
     </nav>
     <h1>{{product.title}}</h1>
     <img class="img-thumbnail h-50" src="../static/images/shirts/{{product.image_id}}.jpg" alt="Image of Shirt"/><br />
