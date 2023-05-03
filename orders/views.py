@@ -9,8 +9,10 @@ from credit_cards.models import CreditCard, UserCreditCard
 def order(request):  # Rename is necessary
     cart=Cart.objects.get(pk=request.GET.get("cart"))
     items = CartProductTable.objects.filter(associated_cart=cart)
-
-    return render(request, 'orders/index.html',{'items':items,'cart':cart})
+    total = 0.0
+    for item in items:
+        total+=item.product.price
+    return render(request, 'orders/index.html',{'items':items,'cart':cart,'total':total})
 def AddtoCart(request):  # Rename is necessary
     print(request.POST)
     cart=request.POST['cart']
@@ -55,3 +57,13 @@ def CompleteCheckout(request):  # Rename is necessary
             ordered_item.save()
             item.delete()
     return HttpResponseRedirect("../email_confirmation")
+def RemovefromCart(request):  # Rename is necessary
+    print(request.POST)
+    cart=request.POST['cart']
+    prod=Product.objects.get(pk=request.POST['id'])
+    count=request.POST['count']
+    print(cart,prod,count)
+    cartItem = CartProductTable.objects.filter(associated_cart=request.POST['cart'],product=request.POST['id'])
+    if(len(cartItem)>0):
+        cartItem.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

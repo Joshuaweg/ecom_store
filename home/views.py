@@ -12,7 +12,7 @@ def home(request):
         cart = models.Cart.objects.get(associated_user=request.user.id)
         cartList=models.CartProductTable.objects.filter(associated_cart=cart.id)
         print(len(cartList))
-        return render(request,'home/index.html',{'today':datetime.today(),"cart":cartList}) #add 'cart':cart
+        return render(request,'home/index.html',{'today':datetime.today(),"cartList":cartList,'cart':cart}) #add 'cart':cart
     else:
         return render(request,'home/index.html',{'today':datetime.today()})
 def signup(request):
@@ -28,3 +28,5 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, '../templates/registration/signup.html', {'form': form})
+def test_layout(request):
+        return render(request,'test.html')

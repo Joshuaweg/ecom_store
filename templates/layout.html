@@ -1,0 +1,47 @@
+<html>
+<head>
+   {% block title %} <title>AZ ECommerce</title>{% endblock %}
+    {% load static %}
+    {%block bootstrap%}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    {%endblock%}
+
+
+</head>
+<div class="container-fluid" id="page">
+    <body>
+        {% block sitehead %}
+        <div class="bg-dark text-success p-3">
+            <h1 class="d-flex justify-content-center">Welcome to A-Z E-Commerce</h1>
+            <h2 class="d-flex justify-content-center">Your Best Shirt is a CLICK away</h2>
+        </div>
+        {% endblock %}
+        {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products">Shirts</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="products">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
+                <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
+            </form>
+            <a href="/accounts/login" class="btn btn-primary">Login</a>
+            <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
+            {%if cart%}
+            <a href="orders?cart={{cart.0.associated_cart.id}}" class="btn ">Cart ({{cart|length}})</a>
+            {%else%}
+            <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+            {%endif%}
+        </nav>
+        {% endblock %}
+        <p>Today is {{today}} </p>
+
+    </body>
+</div>
+</html>

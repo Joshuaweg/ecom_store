@@ -10,7 +10,7 @@
 </head>
 <div class="container-fluid" id="page">
     <body>
-        <div class="bg-dark text-success p-3">
+        <div class="mainbanner">
             <h1 class="d-flex justify-content-center">Welcome to A-Z E-Commerce</h1>
             <h2 class="d-flex justify-content-center">Your Best Shirt is a CLICK away</h2>
         </div>
@@ -30,12 +30,18 @@
             <a href="/accounts/login" class="btn btn-primary">Login</a>
             <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
             {%if cart%}
-            <a  href="orders?cart={{cart.0.associated_cart.id}}" class="btn ">Cart ({{cart|length}})</a>
+            <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
             {%else%}
-            <a  href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+            <a type="button"  href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
             {%endif%}
         </nav>
-        <p>Today is {{today}} </p>
+        <div class="row">
+            <img class="col-sm" src="static/images/Clothes2.png" alt="Shirts">
+            <img class="col-sm" src="static/images/Clothes3.png" alt="Shirts">
+            <img class="col-sm" src="static/images/Clothes4.png" alt="And More Shirts">
+        </div>
+            
+       
 
     </body>
 </div>

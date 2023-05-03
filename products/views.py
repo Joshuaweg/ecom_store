@@ -7,7 +7,7 @@ from orders.models import CartProductTable,Cart # to add 'cart': cart
 # Create your views here.
 #this is th Product List View
 def product_list(request):  # Rename is necessary
-    all_products = Product.objects.all()
+    all_products = Product.objects.exclude(pk=12);
     
     if request.user.is_authenticated:
         cart = Cart.objects.get(associated_user=request.user.id)
