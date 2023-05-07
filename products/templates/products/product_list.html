@@ -5,62 +5,64 @@
     {% load static %}
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.js' %}"></script>
-</head>
-<body>
-    <div class="bg-dark text-success p-3">
-        <h1 class="d-flex justify-content-center">Welcome to A-Z E-Commerce</h1>
-        <h2 class="d-flex justify-content-center">Your Best Shirt is a CLICK away</h2>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="products">Shirts</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="products">
-            <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
-            <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
-        </form>
-        <a href="user/login" class="btn btn-primary">Login</a>
-        <a href="user/signup" class="btn btn-secondary">Sign-Up</a>
-        {%if cart%}
-        <a href="orders?cart={{cart.id}}" class="btn ">Cart ({{cartList|length}})</a>
-        {%else%}
-        <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
-        {%endif%}
-    </nav>
-    <h1>These are the products: </h1>
-    <div>
-        <ul class="bg-grey">
-            {% for product in products %}
-            <li>
-                <div>
-                    <a href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}</a>
-                    <img class="img-thumbnail h-25" src="static/images/shirts/{{product.image_id}}.jpg" />
-                    <p>{{product.description}}/color-{{product.color}}</p>
-                    {%if cart%}
-                    <form action="orders/AddtoCart" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="id" value={{product.id}} />
-                        <input type="hidden" name="cart" value={{cart.id}} />
-                        <input type="hidden" name="count" value=1 />
-                        <button type="submit" class="btn btn-dark">Add to Cart</button>
 
-                    </form>
-                    {%else%}
-                    <form action="products" method="get">
-                        {% csrf_token %}
-                        <button type="submit" href="/products" class="btn btn-dark">Add to Cart</button>
-                    </form>
-                    {%endif%}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <p>Hello !!</p>
-    </div>
-</body>
+
+</head>
+    <body>
+        <div class="bg-dark text-success p-3">
+            <h1 class="d-flex justify-content-center">Welcome to A-Z E-Commerce</h1>
+            <h2 class="d-flex justify-content-center">Your Best Shirt is a CLICK away</h2>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products">Shirts</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="products">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
+                <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
+            </form>
+            <a href="/accounts/login" class="btn btn-primary">Login</a>
+            <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
+            {%if cart%}
+            <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
+            {%else%}
+            <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
+            {%endif%}
+        </nav>
+        <h1>These are the products: </h1>
+        <div>
+            <ul class="bg-grey">
+                {% for product in products %}
+                <li class="bg-info border">
+                    <div class="row align-items-center">
+                        <a class="col text-white justify-content-center" href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}
+                            <img class="img-thumbnail col-2" src="static/images/shirts/{{product.image_id}}.jpg" /></a>
+                        <p class="col justify-content-center"" >{{product.description}}/color-{{product.color}}</p>
+                        {%if cart%}
+                        <form class="col justify-content-center" action="orders/AddtoCart" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value={{product.id}} />
+                            <input type="hidden" name="cart" value={{cart.id}} />
+                            <input type="hidden" name="count" value=1 />
+                            <button type="submit" class="btn-lg btn-dark">Add to Cart</button>
+
+                        </form>
+                        {%else%}
+                        <form action="products" method="get">
+                            {% csrf_token %}
+                            <button type="submit" href="/products" class="btn btn-dark">Add to Cart</button>
+                        </form>
+                        {%endif%}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <p>Hello !!</p>
+        </div>
+    </body>
 </html>

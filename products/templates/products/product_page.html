@@ -27,9 +27,9 @@
         <button type="button" href="/login" class="btn btn-primary">Login</button>
         <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
         {%if cart%}
-        <a href="orders?cart={{cart.0.associated_cart.id}}" class="btn ">Cart ({{cartList|length}})</a>
+        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
         {%else%}
-        <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
         {%endif%}
     </nav>
     <h1>{{product.title}}</h1>

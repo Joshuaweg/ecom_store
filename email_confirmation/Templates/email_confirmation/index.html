@@ -29,9 +29,9 @@
         <button type="button" href="/login" class="btn btn-primary">Login</button>
         <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
         {%if cart%}
-        <a href="orders?cart={{cart.id}}" class="btn ">Cart ({{cartList|length}})</a>
+        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
         {%else%}
-        <a href="orders?cart={{cart.id}}" class="btn ">Cart (0)</a>
+        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
         {%endif%}
     </nav>
     A confirmation email has been sent to your email address

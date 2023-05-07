@@ -2,40 +2,76 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
     <title>AZ ECommerce</title>
     {% load static %}
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
-<body>
-    <div>
-        <h3>Shipping Address</h3>
-        <p>Name: {{shipping.name}}</p>
-        <p>Address: {{shipping.address1}}</p>
-        <p>Room Number: {{shipping.address2}}</p>
-        <p>City: {{shipping.city}}</p>
-        <p>State: {{shipping.state}}</p>
-        <p>Zip Code: {{shipping.zipcode}}</p>
-    </div>
-    <form action="orders/checkout" method="post">
-        {% csrf_token %}
-        <label for="CardholserName">Cardholder</label>
-        <input name="CardholderName" type="text" />
-        <label for="CreditCardnumber">Credit Card Number</label>
-        <input name="CreditCardNumber" type="text" />
-        <label for="exprdate">Expiration Date</label>
-        <input name="exprdate" type="text" />
-        <label for="CVV">CCV Name</label>
-        <input name="CVV" type="text" />
-        <input type="hidden" name="cart_id" value={{cart}} />
-        <input type="hidden" name="name" value={{shipping.name}} />
-        <input type="hidden" name="address1" value={{shipping.address1}} />
-        <input type="hidden" name="address2" value={{shipping.address2}} />
-        <input type="hidden" name="city" value={{shipping.city}} />
-        <input type="hidden" name="state" value={{shipping.state}} />
-        <input type="hidden" name="zipcode" value={{shipping.zipcode}} />
-        <button type="submit">Checkout</button>
-    </form>
-</body>
+    <body>
+        <div class="banner text-success p-3">
+            <h1 class="d-flex justify-content-center">Welcome to A-Z E-Commerce</h1>
+            <h2 class="d-flex justify-content-center">Your Best Shirt is a CLICK away</h2>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products">Shirts</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="products">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
+                <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
+            </form>
+            <a href="/accounts/login" class="btn btn-primary">Login</a>
+            <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
+            {%if cartList%}
+            <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
+            {%else%}
+            <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
+            {%endif%}
+        </nav>
+        <div class="bg-info">
+            <h3>Shipping Address</h3>
+            <p>Name: {{shipping.name}}</p>
+            <p>Address: {{shipping.address1}}</p>
+            <p>Room Number: {{shipping.address2}}</p>
+            <p>City: {{shipping.city}}</p>
+            <p>State: {{shipping.state}}</p>
+            <p>Zip Code: {{shipping.zipcode}}</p>
+        </div>
+        <form class="bg-light" action="orders/checkout" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-2">
+                    <label for="CardholserName">Cardholder</label>
+                    <input class="form-control" name="CardholderName" type="text" />
+                </div>
+                <div class="form-group col-3">
+                    <label for="CreditCardnumber">Credit Card Number</label>
+                    <input class="form-control" name="CreditCardNumber" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-2">
+                    <label for="exprdate">Expiration Date</label>
+                    <input class="form-control" name="exprdate" type="text" />
+                </div>
+                <div class="form-group col-2">
+                    <label for="CVV">CCV Number</label>
+                    <input class="form-control" name="CVV" type="text" />
+                </div>
+            </div>
+            <input type="hidden" name="cart_id" value={{cart}} />
+            <input type="hidden" name="name" value={{shipping.name}} />
+            <input type="hidden" name="address1" value={{shipping.address1}} />
+            <input type="hidden" name="address2" value={{shipping.address2}} />
+            <input type="hidden" name="city" value={{shipping.city}} />
+            <input type="hidden" name="state" value={{shipping.state}} />
+            <input type="hidden" name="zipcode" value={{shipping.zipcode}} />
+            <button type="submit">Checkout</button>
+        </form>
+    </body>
 </html>

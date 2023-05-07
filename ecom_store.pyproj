@@ -1649,8 +1649,8 @@
     <Compile Include="orders\urls.py" />
     <Compile Include="orders\views.py" />
     <Compile Include="orders\__init__.py" />
-    <Compile Include="test_orders.py" />
-    <Compile Include="test_products.py" />
+    <Compile Include="tests\test_orders.py" />
+    <Compile Include="tests\test_products.py" />
     <Compile Include="manage.py" />
     <Compile Include="ecom_store\__init__.py" />
     <Compile Include="ecom_store\settings.py" />
@@ -1664,7 +1664,7 @@
     <Compile Include="products\urls.py" />
     <Compile Include="products\views.py" />
     <Compile Include="products\__init__.py" />
-    <Compile Include="test_home.py">
+    <Compile Include="tests\test_home.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="user\admin.py" />
@@ -1688,6 +1688,8 @@
     <Folder Include="app\templates\app\" />
     <Folder Include="email_confirmation\Templates\" />
     <Folder Include="email_confirmation\Templates\email_confirmation\" />
+    <Folder Include="static\django-browser-reload\" />
+    <Folder Include="tests\" />
     <Folder Include="templates\registration\" />
     <Folder Include="boot\css\" />
     <Folder Include="boot\js\" />
@@ -4279,6 +4281,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="email_confirmation\Templates\email_confirmation\index.html" />
+    <Content Include="static\images\Clothes2.png" />
+    <Content Include="static\images\Clothes3.png" />
+    <Content Include="static\images\Clothes4.png" />
+    <Content Include="static\images\MountainClothes.png" />
+    <Content Include="templates\layout.html" />
+    <Content Include="static\django-browser-reload\reload-worker.js" />
     <Content Include="templates\registration\signup.html" />
     <Content Include="templates\registration\login.html" />
     <Content Include="boot\css\bootstrap-grid.css" />
@@ -7963,6 +7971,7 @@
     <Content Include="static\app\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="static\app\scripts\bootstrap.js" />
     <Content Include="static\app\scripts\bootstrap.min.js" />
+    <Content Include="templates\test.html" />
     <Content Include="testing.txt">
       <SubType>Code</SubType>
     </Content>
