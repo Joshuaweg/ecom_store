@@ -21,15 +21,18 @@ def product_list(request):  # Rename is necessary
 def product_page(request):
     all_products = Product.objects.all()
     print(request.GET)  # previous commit
-    product = Product.objects.get(pk=request.GET.get("id"))
+    try:
+        product = Product.objects.get(pk=request.GET.get("id"))
 
-    if request.user.is_authenticated:
-        cart = Cart.objects.get(associated_user=request.user)
-        cartList=CartProductTable.objects.get(associated_cart=cart.id)
+        if request.user.is_authenticated:
+            cart = Cart.objects.get(associated_user=request.user)
+            cartList=CartProductTable.objects.get(associated_cart_id=cart.id)
 
-        return render(request,'products/product_page.html',{'product':product ,'cart': cart,'cartList':cartList})
-    else:
-        return render(request,'products/product_page.html',{'product':product})#add 'cart':cart
+            return render(request,'products/product_page.html',{'product':product,'cart': cart,'cartList':cartList})
+        else:
+            return render(request,'products/product_page.html',{'product':product})#add 'cart':cart
+    except:
+        return render(request,'products/product_page.html',{'product':None})
 
 # ORIGINAL CODE BEFORE THE IF/ELSE BLOCK
 #def product_list(request):  # Rename is necessary

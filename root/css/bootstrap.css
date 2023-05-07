@@ -4,6 +4,15 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+.mainbanner {
+    background-image:url("static//images//MountainClothes.png");
+    background-color:darkred;
+}
+#page {
+    background-color:cornflowerblue;
+}
+/*custom above*/
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

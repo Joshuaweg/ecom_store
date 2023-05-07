@@ -24,9 +24,25 @@ def AddtoCart(request):  # Rename is necessary
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 def CompleteCheckout(request):  # Rename is necessary
     print(request.POST)
+    print(request.POST['cart_id'])
+    print(request.POST['name'])
+    print(request.POST['address1'])
+    print(request.POST['address2'])
+    print(request.POST['city'])
+    print(request.POST['state'])
+    print(request.POST['zipcode'])
+    print(request.POST['CreditCardNumber'])
+    print(request.POST['exprdate'])
+    print(request.POST['CVV'])
     cart=request.POST['cart_id']
-    cart=Cart.objects.get(pk=cart)
-    cartItems=CartProductTable.objects.filter(associated_cart=cart)
+    print(cart)
+    cart=Cart.objects.filter(pk=cart)
+    if(len(cart)>0):
+        cart=cart[0]
+        cartItems=CartProductTable.objects.filter(associated_cart_id=cart)
+        print(cartItems)
+    else:
+        cartItems=[]
     ship_name=request.POST['name']
     ship_address=request.POST['address1']
     ship_address2=request.POST['address2']
@@ -35,27 +51,32 @@ def CompleteCheckout(request):  # Rename is necessary
     ship_zipcode=request.POST['zipcode']
     
 
-    creditcard = CreditCard.objects.get(credit_card_number=request.POST["CreditCardNumber"])
+    creditcard = CreditCard.objects.filter(credit_card_number=request.POST["CreditCardNumber"])
     if(creditcard):
-        UserCred = UserCreditCard.objects.filter(user_id=request.user.id).filter(credit_card=creditcard)
+        UserCred = UserCreditCard.objects.filter(user_id=request.user.id).filter(credit_card=creditcard[0])
         if(UserCred):
             pass
         else:
             UseCC=UserCreditCard(user_id=request.user,credit_card=creditcard)
             UseCC.save()
-        for item in cartItems:
-            ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=creditcard)
-            ordered_item.save()
-            item.delete()
+        if(len(cartItems)>0):
+            for item in cartItems:
+                ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=creditcard[0])
+                ordered_item.save()
+                item.delete()
     else:
-        credit=CreditCard(credit_card_number=request.POST["CreditCardNumber"],experation_date=request.POST['exprdate'],cvv=request.POST['CVV'])
-        credit.save()
-        UseCC=UserCreditCard(user_id=request.user,credit_card=credit)
-        UseCC.save()
-        for item in cartItems:
-            ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=creditcard)
-            ordered_item.save()
-            item.delete()
+        try:
+            credit=CreditCard(credit_card_number=request.POST["CreditCardNumber"],experation_date=request.POST['exprdate'],cvv=request.POST['CVV'])
+            credit.save()
+            UseCC=UserCreditCard(user_id=request.user,credit_card=credit)
+            UseCC.save()
+        except:
+            print("No Credit card information!")
+        if(len(cartItems)>0):
+            for item in cartItems:
+                ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=creditcard)
+                ordered_item.save()
+                item.delete()
     return HttpResponseRedirect("../email_confirmation")
 def RemovefromCart(request):  # Rename is necessary
     print(request.POST)

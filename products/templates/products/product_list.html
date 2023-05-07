@@ -41,8 +41,8 @@
                 <li class="bg-info border">
                     <div class="row align-items-center">
                         <a class="col text-white justify-content-center" href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}
-                            <img class="img-thumbnail h-75" src="static/images/shirts/{{product.image_id}}.jpg" /></a>
-                        <p class="col justify-content-center"" >{{product.description}}/color-{{product.color}}</class=""p>
+                            <img class="img-thumbnail col-2" src="static/images/shirts/{{product.image_id}}.jpg" /></a>
+                        <p class="col justify-content-center"" >{{product.description}}/color-{{product.color}}</p>
                         {%if cart%}
                         <form class="col justify-content-center" action="orders/AddtoCart" method="post">
                             {% csrf_token %}

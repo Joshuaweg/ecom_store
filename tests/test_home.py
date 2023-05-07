@@ -1,6 +1,6 @@
 import unittest
 import os
-from django.test import Client
+from django.test import Client, TestCase
 #this will serve to test the home app
 #right now this is mainly check that the required paths exist in the project
 def test_h():
