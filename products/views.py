@@ -1,14 +1,19 @@
 from django.shortcuts import render
 from .models import Product
-
+from django.db.models import Q
 from orders.models import CartProductTable,Cart # to add 'cart': cart 
 
 
 # Create your views here.
 #this is th Product List View
 def product_list(request):  # Rename is necessary
-    all_products = Product.objects.exclude(pk=12);
-    
+    search = request.GET.get("search","")
+    if(search == ''):
+        all_products = Product.objects.exclude(pk=12)
+    else:
+        all_products = Product.objects.filter(Q(title__contains=search)|Q(description__contains=search))
+        if(len(all_products)==0):
+            all_products = Product.objects.exclude(pk=12)
     if request.user.is_authenticated:
         cart = Cart.objects.get(associated_user=request.user.id)
         cartList=CartProductTable.objects.filter(associated_cart=cart.id)
@@ -20,18 +25,21 @@ def product_list(request):  # Rename is necessary
 #this is the product page View
 def product_page(request):
     all_products = Product.objects.all()
-    print(request.GET)  # previous commit
+    print(request.GET) 
     try:
         product = Product.objects.get(pk=request.GET.get("id"))
-
+        print(product)
         if request.user.is_authenticated:
-            cart = Cart.objects.get(associated_user=request.user)
-            cartList=CartProductTable.objects.get(associated_cart_id=cart.id)
+            cart = Cart.objects.get(associated_user=request.user.id)
+            print(cart)
+            print(cart.id)
+            cartList=CartProductTable.objects.filter(associated_cart=cart.id)
 
-            return render(request,'products/product_page.html',{'product':product,'cart': cart,'cartList':cartList})
+            return render(request,'products/product_page.html',{'product':product,'cart': cart.id,'cartList':cartList})
         else:
             return render(request,'products/product_page.html',{'product':product})#add 'cart':cart
-    except:
+    except Exception as e:
+        print(e)
         return render(request,'products/product_page.html',{'product':None})
 
 # ORIGINAL CODE BEFORE THE IF/ELSE BLOCK

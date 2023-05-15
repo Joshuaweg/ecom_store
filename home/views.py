@@ -1,9 +1,9 @@
+from .forms import UserCreationForm
 from datetime import datetime
 from os.path import lexists
 from orders.models import CartProductTable,Cart
 from orders import models
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -29,9 +29,10 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            cart=Cart(associated_user=user)
             return redirect('../home')
     else:
         form = UserCreationForm()
-    return render(request, '../templates/registration/signup.html', {'form': form})
+        return render(request, '../templates/registration/signup.html', {'form': form})
 def test_layout(request):
         return render(request,'test.html')

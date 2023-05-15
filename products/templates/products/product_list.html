@@ -40,11 +40,11 @@
                 {% for product in products %}
                 <li class="bg-info border">
                     <div class="row align-items-center">
-                        <a class="col text-white justify-content-center" href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}
-                            <img class="img-thumbnail col-2" src="static/images/shirts/{{product.image_id}}.jpg" /></a>
-                        <p class="col justify-content-center"" >{{product.description}}/color-{{product.color}}</p>
+                        <a style="font-size:30px;" class="col-2 text-white justify-content-center" href="/products/item?id={{product.id}}&User={{user.id}}">{{product.title}}
+                            <img class="img-thumbnail" src="static/images/shirts/{{product.image_id}}.jpg" /></a>
+                        <p style="font-size:28px;" class="col-3" >{{product.description}}/color-{{product.color}}</p>
                         {%if cart%}
-                        <form class="col justify-content-center" action="orders/AddtoCart" method="post">
+                        <form class="col3 justify-content-center" action="orders/AddtoCart" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="id" value={{product.id}} />
                             <input type="hidden" name="cart" value={{cart.id}} />
@@ -62,7 +62,6 @@
                 </li>
                 {% endfor %}
             </ul>
-            <p>Hello !!</p>
         </div>
     </body>
 </html>

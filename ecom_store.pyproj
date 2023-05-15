@@ -1635,6 +1635,9 @@
     <Compile Include="env\Lib\site-packages\_pytest\__init__.py" />
     <Compile Include="home\admin.py" />
     <Compile Include="home\apps.py" />
+    <Compile Include="home\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="home\migrations\__init__.py" />
     <Compile Include="home\models.py" />
     <Compile Include="home\tests.py" />

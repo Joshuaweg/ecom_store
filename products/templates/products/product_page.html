@@ -14,10 +14,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="products">Shirts</a>
+                <a class="nav-link" href="../products">Shirts</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="products">
@@ -27,33 +27,33 @@
         <button type="button" href="/login" class="btn btn-primary">Login</button>
         <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
         {%if cart%}
-        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
+        <a type="button" href="../orders?cart={{cart}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
         {%else%}
-        <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart (0)</a>
+        <a type="button" href="../orders?cart={{cart}}" class="btn btn-dark">Cart (0)</a>
         {%endif%}
     </nav>
-    <h1>{{product.title}}</h1>
-    <img class="img-thumbnail h-50" src="../static/images/shirts/{{product.image_id}}.jpg" alt="Image of Shirt"/><br />
-    <p>{{product.description}}</p>
-    <form class="col-3">
-        <div class="form-group">
-            <label for="SelectColor">Color</label>
-            <select class="form-control" id="SelectColor">
-                <option>Red</option>
-                <option>Blue</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="SelectSize">Color</label>
-            <select class="form-control" id="SelectSize">
-                <option>s</option>
-                <option>xl</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label> Add to Cart</label>
-            <input class="rounded bg-light" type="submit" value="Add" />
-        </div>
-    </form>
+    <div class="bg-info">
+        <h1>{{product.title}}</h1>
+        <img class="img-thumbnail h-50" src="../static/images/shirts/{{product.image_id}}.jpg" alt="Image of Shirt" /><br />
+        <p>{{product.description}}</p>
+        <form class="col-3" action="../orders/AddtoCart" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="SelectColor">Color</label>
+                <input type="text" class="form-control" id="SelectColor" value="{{product.color}}" disabled>
+
+            </div>
+            <div class="form-group">
+                <label for="SelectSize">size</label>
+                <input type="text" class="form-control" id="SelectColor" value="{{product.size}}" disabled>
+            </div>
+            <input type="hidden" name="id" value={{product.id}} />
+            <input type="hidden" name="cart" value={{cart}} />
+            <input type="hidden" name="count" value=1 />
+            <div class="form-group">
+                <input style="font-size:48px" class="rounded bg-light" type="submit" value="AddtoCart" />
+            </div>
+        </form>
+    </div>
 </body>
 </html>

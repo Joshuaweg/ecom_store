@@ -12,7 +12,7 @@ def order(request):  # Rename is necessary
     total = 0.0
     for item in items:
         total+=item.product.price
-    return render(request, 'orders/index.html',{'items':items,'cart':cart,'total':total})
+    return render(request, 'orders/index.html',{'items':items,'cart':cart,'total':total,"cartList":items})
 def AddtoCart(request):  # Rename is necessary
     print(request.POST)
     cart=request.POST['cart']
@@ -57,7 +57,7 @@ def CompleteCheckout(request):  # Rename is necessary
         if(UserCred):
             pass
         else:
-            UseCC=UserCreditCard(user_id=request.user,credit_card=creditcard)
+            UseCC=UserCreditCard(user_id=request.user,credit_card=creditcard[0])
             UseCC.save()
         if(len(cartItems)>0):
             for item in cartItems:
@@ -66,15 +66,16 @@ def CompleteCheckout(request):  # Rename is necessary
                 item.delete()
     else:
         try:
-            credit=CreditCard(credit_card_number=request.POST["CreditCardNumber"],experation_date=request.POST['exprdate'],cvv=request.POST['CVV'])
+            credit=CreditCard(credit_card_number=request.POST["CreditCardNumber"],expiration_date=request.POST['exprdate'],cvv=request.POST['CVV'])
             credit.save()
             UseCC=UserCreditCard(user_id=request.user,credit_card=credit)
             UseCC.save()
-        except:
+        except Exception as e:
+            print(e)
             print("No Credit card information!")
         if(len(cartItems)>0):
             for item in cartItems:
-                ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=creditcard)
+                ordered_item =Order(associated_user=request.user,product=item.product,shipping_name=ship_name,shipping_address=ship_address,shipping_address_2=ship_address2,city=ship_city,state=ship_state,zip_code=ship_zipcode,credit_card=UseCC.credit_card)
                 ordered_item.save()
                 item.delete()
     return HttpResponseRedirect("../email_confirmation")
