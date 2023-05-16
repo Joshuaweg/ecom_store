@@ -22,7 +22,8 @@ def AddtoCart(request):  # Rename is necessary
     cartItem = CartProductTable(product=prod,productQuantity=count,associated_cart_id=cart)
     cartItem.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-def CompleteCheckout(request):  # Rename is necessary
+
+def CompleteCheckout(request):  
     print(request.POST)
     print(request.POST['cart_id'])
     print(request.POST['name'])
@@ -79,13 +80,17 @@ def CompleteCheckout(request):  # Rename is necessary
                 ordered_item.save()
                 item.delete()
     return HttpResponseRedirect("../email_confirmation")
-def RemovefromCart(request):  # Rename is necessary
+
+# When the order is complete, the cart should be emptied to be reused again.
+# Each item will get individually deleted. 
+# Update the database with the empty cart.
+def RemovefromCart(request):  
     print(request.POST)
     cart=request.POST['cart']
-    prod=Product.objects.get(pk=request.POST['id'])
+    prod=Product.objects.get(pk=request.POST['id']) # Get product ID from the cart
     count=request.POST['count']
     print(cart,prod,count)
     cartItem = CartProductTable.objects.filter(associated_cart=request.POST['cart'],product=request.POST['id'])
     if(len(cartItem)>0):
-        cartItem.delete()
+        cartItem.delete() # Performs the deletion.
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
