@@ -24,16 +24,6 @@ def AddtoCart(request):  # Rename is necessary
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 def CompleteCheckout(request):  # Rename is necessary
     print(request.POST)
-    print(request.POST['cart_id'])
-    print(request.POST['name'])
-    print(request.POST['address1'])
-    print(request.POST['address2'])
-    print(request.POST['city'])
-    print(request.POST['state'])
-    print(request.POST['zipcode'])
-    print(request.POST['CreditCardNumber'])
-    print(request.POST['exprdate'])
-    print(request.POST['CVV'])
     cart=request.POST['cart_id']
     print(cart)
     cart=Cart.objects.filter(pk=cart)

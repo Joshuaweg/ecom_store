@@ -26,8 +26,8 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Enter search here ..." name="search" />
             <button class="btn btn-outline-success my-2 my-sm-0 pr-2" type="submit">Search</button>
         </form>
-        <button type="button" href="/login" class="btn btn-primary">Login</button>
-        <button type="button" href="/signup" class="btn btn-secondary">Sign-Up</button>
+        <a href="/accounts/login" class="btn btn-primary">Login</a>
+        <a type="button" href="/accounts/signup" class="btn btn-secondary">Sign-Up</a>
         {%if cart%}
         <a type="button" href="orders?cart={{cart.id}}" class="btn btn-dark">Cart ({{cartList|length}})</a>
         {%else%}
